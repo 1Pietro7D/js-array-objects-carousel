@@ -73,7 +73,7 @@ function moveCarouselPrevious() {
   clearInterval(idInterval);
   // se l'indice è in prima posizione si valorizza all'ultima posizione dell'array
   activeIndex = activeIndex > 0 ? activeIndex - 1 : images.length - 1;
-  buildCarousel(images.url, activeIndex);
+  buildCarousel(images, activeIndex);
   idInterval = setInterval(moveCarouselForward, CHANGE_IMAGE_DELAY * 1000);
 }
 
@@ -82,10 +82,10 @@ function buildCarousel(urls, activeIndex) {
   const carouselThumbs = document.querySelector(".carousel-thumbs");
   let content = "";
   for (let i = 0; i < urls.length; i++) {
-    const url = urls[i]["url"];
+    const arrayIndex = urls[i];
     const imageClass =
       i === activeIndex ? "carousel-img active" : "carousel-img";
-    content += `<img class="${imageClass}" src="${url}" alt="${url}" />`;
+    content += `<img class="${imageClass}" src="${arrayIndex["url"]}" title="${arrayIndex["title"]}" alt="${arrayIndex["description"]}" />`;
   }
   // console.log({content});
   carouselImages.innerHTML = content;
