@@ -77,15 +77,15 @@ function moveCarouselPrevious() {
   idInterval = setInterval(moveCarouselForward, CHANGE_IMAGE_DELAY * 1000);
 }
 
-function buildCarousel(urls, activeIndex) {
+function buildCarousel(places, activeIndex) {
   const carouselImages = document.querySelector(".carousel-images");
   const carouselThumbs = document.querySelector(".carousel-thumbs");
   let content = "";
-  for (let i = 0; i < urls.length; i++) {
-    const arrayIndex = urls[i];
+  for (let i = 0; i < places.length; i++) {
+    const place = places[i];
     const imageClass =
       i === activeIndex ? "carousel-img active" : "carousel-img";
-    content += `<img class="${imageClass}" src="${arrayIndex["url"]}" title="${arrayIndex["title"]}" alt="${arrayIndex["description"]}" />`;
+    content += `<img class="${imageClass}" src="${place["url"]}" title="${place["title"]}" alt="${place["description"]}" />`;
   }
   // console.log({content});
   carouselImages.innerHTML = content;
